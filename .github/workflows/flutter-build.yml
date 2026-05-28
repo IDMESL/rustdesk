@@ -819,6 +819,7 @@ jobs:
           files: rustdesk-${{ env.VERSION }}-unsigned.tar.gz
 
   build-rustdesk-android:
+    if: false  # IDME Remote: temporalmente deshabilitado, validamos Windows primero. Reactivar tras subir ANDROID_* secrets
     needs: [generate-bridge]
     name: build rustdesk android apk ${{ matrix.job.target }}
     runs-on: ${{ matrix.job.os }}
