@@ -65,7 +65,9 @@ jobs:
 
   build-for-windows-flutter:
     name: ${{ matrix.job.target }}
-    needs: [build-RustDeskTempTopMostWindow, generate-bridge]
+    # IDME Remote: quitado build-RustDeskTempTopMostWindow del needs porque
+    # esta desactivado y bloqueaba este job con "skipped".
+    needs: [generate-bridge]
     runs-on: ${{ matrix.job.os }}
     strategy:
       fail-fast: false
