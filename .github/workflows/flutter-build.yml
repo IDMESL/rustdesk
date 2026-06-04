@@ -265,7 +265,12 @@ jobs:
         if: env.UPLOAD_ARTIFACT == 'true'
         run: |
           pushd ./res/msi
-          python preprocess.py --arp -d ../../rustdesk --app-name "IDME Remote" --manufacturer "IDME S.L."
+          # IDME Remote: dejamos --app-name por defecto (rustdesk) porque
+          # preprocess.py busca {app_name}.exe en el dist dir, y el binario
+          # se llama rustdesk.exe (no cambiamos el nombre del crate Rust).
+          # En el panel de Programas saldra "RustDesk" pero la UI ya muestra
+          # "IDME Remote" en todos sitios visibles al usuario.
+          python preprocess.py --arp -d ../../rustdesk
           nuget restore msi.sln
           msbuild msi.sln -p:Configuration=Release -p:Platform=x64 /p:TargetVersion=Windows10
           mv ./Package/bin/x64/Release/en-us/Package.msi ../../SignOutput/rustdesk-${{ env.VERSION }}-${{ matrix.job.arch }}.msi
