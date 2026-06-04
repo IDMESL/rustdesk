@@ -19,6 +19,16 @@ cert.pfx
 *jpg
 sciter.dll
 **pdb
+
+# IDME Remote: excepciones para nuestros assets de branding (PNG/SVG)
+!flutter/assets/logo.png
+!flutter/assets/icon.png
+!flutter/assets/icon.svg
+!res/**/*.png
+!res/icon.ico
+!res/logo-header.svg
+!res/logo.svg
+!flutter/android/app/src/main/res/mipmap-*/*.png
 src/bridge_generated.rs
 src/bridge_generated.io.rs
 *deb
