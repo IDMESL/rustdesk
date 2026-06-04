@@ -573,6 +573,23 @@ class _RemotePageState extends State<RemotePage> with WidgetsBindingObserver {
               right: 10,
               child: QualityMonitor(gFFI.qualityMonitorModel),
             ),
+            // IDME Remote watermark: logo discreto en esquina inferior derecha,
+            // IgnorePointer para no interceptar gestos del control remoto.
+            Positioned(
+              bottom: 12,
+              right: 12,
+              child: IgnorePointer(
+                child: Opacity(
+                  opacity: 0.55,
+                  child: Image.asset(
+                    'assets/icon.png',
+                    width: 32,
+                    height: 32,
+                    errorBuilder: (ctx, e, st) => const SizedBox.shrink(),
+                  ),
+                ),
+              ),
+            ),
             KeyHelpTools(
                 keyboardIsVisible: keyboardIsVisible,
                 showGestureHelp: _showGestureHelp),

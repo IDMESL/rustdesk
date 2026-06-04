@@ -624,6 +624,25 @@ class _RemotePageState extends State<RemotePage>
             QualityMonitor(_ffi.qualityMonitorModel), null, null),
       ),
     );
+    // IDME Remote watermark: logo pequeno en esquina inferior derecha,
+    // IgnorePointer para que clicks pasen al escritorio remoto sin estorbar.
+    paints.add(
+      Positioned(
+        bottom: 12,
+        right: 12,
+        child: IgnorePointer(
+          child: Opacity(
+            opacity: 0.55,
+            child: Image.asset(
+              'assets/icon.png',
+              width: 36,
+              height: 36,
+              errorBuilder: (ctx, e, st) => const SizedBox.shrink(),
+            ),
+          ),
+        ),
+      ),
+    );
     return Stack(
       children: paints,
     );
